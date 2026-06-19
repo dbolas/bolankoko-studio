@@ -4,10 +4,10 @@
 export const site = {
   name: "Bobelow Studio",
   founder: "Belondjo Bolankoko",
-  role: "Product builder fullstack · UI/UX, développement & automatisation",
+  role: "Product builder fullstack",
   // Téléphone : format affiché + format tel: (E.164, sans espaces).
-  phoneDisplay: "06 00 00 00 00",
-  phoneHref: "tel:+33600000000",
+  phoneDisplay: "07 68 63 87 05",
+  phoneHref: "tel:+33768638705",
   email: "contact@bobelow.studio",
   city: "Strasbourg",
   region: "Bas-Rhin · Eurométropole",
