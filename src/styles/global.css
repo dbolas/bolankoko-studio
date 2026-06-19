@@ -67,8 +67,9 @@ body {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   letter-spacing: 0.02em;
-  /* 65% : ratio ~5.3:1 sur paper — conforme WCAG AA (40% échouait à 2.5:1). */
-  color: color-mix(in srgb, var(--color-ink) 65%, transparent);
+  /* Terracotta : accent de marque (même code couleur que les n° d'étapes) —
+     fait nettement ressortir les labels 01——…07—— sur le fond papier. */
+  color: var(--color-terracotta);
 }
 
 /* Liens de navigation avec soulignement animé. */
@@ -107,6 +108,24 @@ body {
 }
 .reveal.is-visible {
   animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Indicateur de défilement du hero — petit rebond vertical en boucle.
+   prefers-reduced-motion neutralise l'animation (règle globale plus haut). */
+.scroll-cue-arrow {
+  display: inline-block;
+  animation: scroll-bob 1.6s ease-in-out infinite;
+}
+@keyframes scroll-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateY(5px);
+    opacity: 1;
+  }
 }
 
 /* Accordéon FAQ — <details>/<summary> avec animation hauteur */
