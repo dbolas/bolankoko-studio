@@ -1,0 +1,148 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../config";
+---
+
+<Base
+  title={`Mentions légales — ${site.name}`}
+  description={`Mentions légales du site ${site.name}, studio web à ${site.city}.`}
+  noindex
+>
+  <Nav />
+  <main id="contenu" class="px-6 py-20 md:px-12">
+    <article class="mx-auto flex max-w-[720px] flex-col gap-12">
+
+      <header class="flex flex-col gap-3 border-b border-ink/10 pb-8">
+        <h1
+          class="font-display text-[clamp(2rem,5vw,3rem)] font-normal leading-tight text-ink"
+        >
+          Mentions légales
+        </h1>
+        <p class="section-label">Mise à jour : juin 2026</p>
+      </header>
+
+      <section class="flex flex-col gap-4">
+        <h2 class="font-display text-xl font-semibold text-ink">Éditeur du site</h2>
+        <dl class="flex flex-col gap-2 text-base leading-[1.75] text-ink/80">
+          <div>
+            <dt class="inline font-semibold text-ink">{site.name}</dt>
+          </div>
+          <div><dt class="inline">Représentant :</dt> <dd class="inline">{site.founder}</dd></div>
+          <div><dt class="inline">Statut :</dt> <dd class="inline">Entreprise individuelle (EI)</dd></div>
+          <div>
+            <dt class="inline">Adresse :</dt>
+            <dd class="inline font-mono text-sm text-ink">[ADRESSE]</dd>
+          </div>
+          <div>
+            <dt class="inline">SIRET :</dt>
+            <dd class="inline font-mono text-sm text-ink">[SIRET]</dd>
+          </div>
+          <div>
+            <dt class="inline">E-mail :</dt>
+            <dd class="inline">
+              <a href={`mailto:${site.email}`} class="nav-link text-terracotta">
+                {site.email}
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt class="inline">Téléphone :</dt>
+            <dd class="inline">
+              <a href={site.phoneHref} class="nav-link text-terracotta">
+                {site.phoneDisplay}
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="flex flex-col gap-4">
+        <h2 class="font-display text-xl font-semibold text-ink">
+          Directeur de la publication
+        </h2>
+        <p class="text-base leading-[1.75] text-ink/80">{site.founder}</p>
+      </section>
+
+      <section class="flex flex-col gap-4">
+        <h2 class="font-display text-xl font-semibold text-ink">Hébergeur</h2>
+        <dl class="flex flex-col gap-2 text-base leading-[1.75] text-ink/80">
+          <div>
+            <dt class="inline">Société :</dt>
+            <dd class="inline font-mono text-sm text-ink">[NOM HÉBERGEUR]</dd>
+          </div>
+          <div>
+            <dt class="inline">Adresse :</dt>
+            <dd class="inline font-mono text-sm text-ink">[ADRESSE HÉBERGEUR]</dd>
+          </div>
+          <div>
+            <dt class="inline">Site :</dt>
+            <dd class="inline font-mono text-sm text-ink">[SITE HÉBERGEUR]</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="flex flex-col gap-4">
+        <h2 class="font-display text-xl font-semibold text-ink">
+          Propriété intellectuelle
+        </h2>
+        <p class="text-base leading-[1.75] text-ink/80">
+          L'ensemble des contenus présents sur ce site (textes, images, graphismes, logo)
+          est la propriété exclusive de {site.name}, sauf mention contraire. Toute
+          reproduction, représentation ou diffusion, totale ou partielle, sans accord
+          préalable écrit est interdite.
+        </p>
+      </section>
+
+      <section class="flex flex-col gap-4">
+        <h2 class="font-display text-xl font-semibold text-ink">
+          Données personnelles (RGPD)
+        </h2>
+        <div class="flex flex-col gap-3 text-base leading-[1.75] text-ink/80">
+          <p>
+            Ce site collecte des données personnelles via le formulaire de demande
+            d'audit gratuit. Les données collectées sont : nom de l'entreprise, ville,
+            numéro de téléphone et, si fourni, l'adresse du site existant.
+          </p>
+          <p>
+            <strong class="text-ink">Finalité :</strong> répondre à votre demande d'audit
+            et vous recontacter dans le cadre d'un éventuel accompagnement.
+          </p>
+          <p>
+            <strong class="text-ink">Durée de conservation :</strong> 12 mois à compter
+            de la soumission du formulaire.
+          </p>
+          <p>
+            <strong class="text-ink">Vos droits :</strong> vous disposez d'un droit
+            d'accès, de rectification et de suppression de vos données. Pour l'exercer,
+            contactez-nous à <a
+              href={`mailto:${site.email}`}
+              class="nav-link text-terracotta">{site.email}</a
+            >.
+          </p>
+          <p>
+            En cas de réclamation non résolue, vous pouvez saisir la CNIL
+            (<span class="font-mono text-sm">cnil.fr</span>).
+          </p>
+        </div>
+      </section>
+
+      <section class="flex flex-col gap-4">
+        <h2 class="font-display text-xl font-semibold text-ink">Cookies</h2>
+        <p class="text-base leading-[1.75] text-ink/80">
+          Ce site n'utilise pas de cookies tiers ni de traceurs analytiques. Aucune
+          donnée de navigation n'est collectée ni transmise à des tiers.
+        </p>
+      </section>
+
+      <div class="border-t border-ink/10 pt-8">
+        <a href="/" class="text-sm text-ink/50 nav-link transition-colors hover:text-ink">
+          ← Retour à l'accueil
+        </a>
+      </div>
+
+    </article>
+  </main>
+  <Footer />
+</Base>

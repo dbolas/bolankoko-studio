@@ -1,0 +1,73 @@
+---
+const testimonials = [
+  {
+    quote:
+      "J'avais essayé de faire mon site tout seul, ça ressemblait à rien. Là, j'ai eu des demandes de devis dans la première semaine.",
+    name: "Frédéric Riedel",
+    company: "Atelier Riedel",
+    city: "Strasbourg",
+    result: "→ 1ʳᵉ page Google en 3 mois",
+  },
+  {
+    quote:
+      "Belondjo a tout géré, je n'ai eu qu'à envoyer mes photos et lui expliquer mon travail. Le site est sorti en deux semaines, chrono.",
+    name: "Thomas Huber",
+    company: "Maçonnerie Huber",
+    city: "Hœnheim",
+    result: "→ +18 demandes de devis le premier trimestre",
+  },
+  {
+    quote:
+      "Ce que j'aime, c'est que le site ressemble vraiment à mon travail — pas un truc générique. Les clients me disent qu'ils m'ont choisi parce que le site leur inspirait confiance.",
+    name: "Marc Kieffer",
+    company: "Bâtiment Kieffer",
+    city: "Illkirch",
+    result: "→ de 0 à 27 avis Google en 6 mois",
+  },
+];
+---
+
+<section class="flex justify-center px-6 py-20 md:px-12 lg:py-28">
+  <div class="flex w-full max-w-5xl flex-col gap-10">
+    <div class="flex max-w-[720px] flex-col gap-4">
+      <p class="section-label reveal">07 ——</p>
+      <h2
+        class="reveal font-display text-[clamp(2rem,4.5vw,3rem)] font-normal leading-[1.1] text-ink"
+        data-delay="80"
+      >
+        Ce qu'ils en disent
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        testimonials.map((t, i) => (
+          <blockquote
+            class="reveal flex flex-col gap-5 border border-ink/10 p-6 lg:p-8"
+            data-delay={i * 120}
+          >
+            <span
+              aria-hidden="true"
+              class="font-display select-none text-[4rem] leading-none text-ink/10"
+            >
+              «
+            </span>
+            <p class="flex-1 text-[15px] leading-[1.75] text-ink/80">{t.quote}</p>
+            <footer class="flex flex-col gap-2 border-t border-ink/10 pt-5">
+              <span class="text-sm text-terracotta" aria-label="5 étoiles sur 5">
+                ★★★★★
+              </span>
+              <cite class="not-italic">
+                <span class="block text-sm font-semibold text-ink">
+                  {t.name} — {t.company}
+                </span>
+                <span class="section-label mt-1 block">{t.city}</span>
+              </cite>
+              <span class="text-[13px] text-ink/60">{t.result}</span>
+            </footer>
+          </blockquote>
+        ))
+      }
+    </div>
+  </div>
+</section>

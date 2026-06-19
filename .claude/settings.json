@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/adsl_2/projet_site_web_peintre/.claude/hooks/guard.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

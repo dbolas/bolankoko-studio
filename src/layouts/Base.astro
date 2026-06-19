@@ -8,11 +8,13 @@ import { site } from "../config";
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title = `${site.name} — Sites & visibilité pour artisans à Strasbourg`,
   description = site.description,
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
@@ -65,6 +67,7 @@ const jsonLd = {
     <meta name="twitter:image" content={ogImage} />
 
     <meta name="theme-color" content="#f4f1ea" />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>

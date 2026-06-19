@@ -107,3 +107,31 @@ body {
 .reveal.is-visible {
   animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+/* Accordéon FAQ — <details>/<summary> avec animation hauteur */
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq-body > div {
+  overflow: hidden;
+}
+details[open] > .faq-body {
+  grid-template-rows: 1fr;
+}
+.faq-icon {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
