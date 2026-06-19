@@ -8,7 +8,7 @@ import { site } from "../config";
   <div class="reveal relative h-[420px] w-full shrink-0 overflow-hidden lg:h-[500px] lg:w-[400px]">
     <img
       src="/images/portrait.png"
-      alt={`${site.founder}, concepteur web à Strasbourg, à son poste de travail.`}
+      alt={`Le fondateur de ${site.name} à son poste de travail, à ${site.city}.`}
       class="absolute inset-0 h-full w-full object-cover"
       loading="lazy"
     />
@@ -23,7 +23,7 @@ import { site } from "../config";
       «&nbsp;Qui est derrière&nbsp;»
     </h2>
     <p class="reveal text-lg leading-[1.7] text-black md:text-xl" data-delay="160">
-      {site.founder}, concepteur web basé à {site.city}. Je travaille avec un
+      {site.name}, studio web basé à {site.city}. Je travaille avec un
       nombre limité d'artisans pour faire les choses bien. Pas un call-center,
       pas un contrat de 5 ans : la personne qui construit votre site est celle
       qui décroche quand vous appelez.

@@ -79,6 +79,37 @@ const jsonLd = {
     </a>
     <slot />
 
+    {/* Bouton flottant : revenir en haut. Apparaît une fois la page défilée. */}
+    <button
+      id="back-to-top"
+      type="button"
+      aria-label="Revenir en haut de la page"
+      class="pointer-events-none fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-terracotta text-paper opacity-0 shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+    >
+      <span aria-hidden="true" class="text-xl leading-none">↑</span>
+    </button>
+
+    <script>
+      // Bouton « retour en haut » : visible après 600px de défilement.
+      const btt = document.getElementById("back-to-top");
+      if (btt) {
+        const toggleBtt = () => {
+          const show = window.scrollY > 600;
+          btt.classList.toggle("opacity-0", !show);
+          btt.classList.toggle("pointer-events-none", !show);
+          btt.classList.toggle("opacity-100", show);
+        };
+        toggleBtt();
+        window.addEventListener("scroll", toggleBtt, { passive: true });
+        btt.addEventListener("click", () => {
+          const reduce = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+          ).matches;
+          window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+        });
+      }
+    </script>
+
     <script>
       // Apparition au défilement, progressive enhancement (désactivée si
       // l'utilisateur préfère moins de mouvement — géré aussi en CSS).
