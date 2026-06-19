@@ -1,5 +1,9 @@
 import type { APIRoute } from "astro";
 
+// Route SSR : doit être servie à la demande (fonction serverless), pas pré-rendue.
+// En output:"static", sans ce flag l'endpoint POST n'est pas déployé → 404.
+export const prerender = false;
+
 const N8N_WEBHOOK_URL = import.meta.env.N8N_WEBHOOK_URL;
 const N8N_WEBHOOK_TOKEN = import.meta.env.N8N_WEBHOOK_TOKEN;
 
