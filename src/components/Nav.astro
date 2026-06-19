@@ -1,10 +1,12 @@
 ---
 import { site } from "../config";
 
+// Ancres absolues (/#...) pour rester fonctionnelles depuis /merci et
+// /mentions-legales — sur ces pages, "#realisations" ne mènerait nulle part.
 const links = [
-  { label: "Projets", href: "#realisations" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "Audit", href: "#audit" },
+  { label: "Projets", href: "/#realisations" },
+  { label: "Expertise", href: "/#expertise" },
+  { label: "Audit", href: "/#audit" },
 ];
 ---
 
@@ -16,7 +18,7 @@ const links = [
     class="flex items-center justify-between px-6 py-5 md:px-12 lg:px-20 lg:py-6"
     aria-label="Navigation principale"
   >
-    <a href="#contenu" class="font-display text-2xl font-bold text-black">
+    <a href="/" class="font-display text-2xl font-bold text-black">
       BOLANKOKO<span class="font-display italic font-normal"> Studio</span>
     </a>
 
@@ -60,7 +62,7 @@ const links = [
       </a>
 
       <a
-        href="#audit"
+        href="/#audit"
         class="bg-terracotta px-5 py-2.5 text-[15px] font-semibold text-paper transition-transform hover:-translate-y-0.5"
       >
         Contact

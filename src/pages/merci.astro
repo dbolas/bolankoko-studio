@@ -10,7 +10,7 @@ import { site } from "../config";
   description="Votre demande d'audit gratuit a bien été reçue. Je reviens vers vous rapidement."
 >
   <Nav />
-  <main class="flex min-h-[60vh] items-center justify-center px-6 py-20 md:px-12">
+  <main id="contenu" class="flex min-h-[60vh] items-center justify-center px-6 py-20 md:px-12">
     <div class="flex w-full max-w-[640px] flex-col items-center gap-8 text-center">
       <h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-tight text-black">
         Merci !
@@ -29,17 +29,17 @@ import { site } from "../config";
           <ul class="flex flex-col gap-3 text-left text-sm text-ink/80">
             <li>
               • M'appeler directement au{" "}
-              <a href={site.phoneHref} class="font-semibold text-terracotta">
+              <a href={site.phoneHref} class="font-semibold text-terracotta underline underline-offset-2">
                 {site.phoneDisplay}
               </a>
             </li>
             <li>
               • Me rejoindre par email :{" "}
-              <a href={`mailto:${site.email}`} class="font-semibold text-terracotta">
+              <a href={`mailto:${site.email}`} class="font-semibold text-terracotta underline underline-offset-2">
                 {site.email}
               </a>
             </li>
-            <li>• Consulter des réalisations sur la <a href="/" class="font-semibold text-terracotta">page d'accueil</a></li>
+            <li>• Consulter des réalisations sur la <a href="/" class="font-semibold text-terracotta underline underline-offset-2">page d'accueil</a></li>
           </ul>
         </div>
 
