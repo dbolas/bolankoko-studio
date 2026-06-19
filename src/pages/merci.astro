@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../config";
+---
+
+<Base
+  title="Merci — Audit gratuit reçu"
+  description="Votre demande d'audit gratuit a bien été reçue. Je reviens vers vous rapidement."
+>
+  <Nav />
+  <main class="flex min-h-[60vh] items-center justify-center px-6 py-20 md:px-12">
+    <div class="flex w-full max-w-[640px] flex-col items-center gap-8 text-center">
+      <h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-tight text-black">
+        Merci !
+      </h1>
+
+      <p class="text-lg text-ink md:text-xl">
+        Votre demande d'audit gratuit est bien reçue. Je vais analyser votre
+        visibilité et reviens vers vous très rapidement — généralement sous 24h.
+      </p>
+
+      <div class="flex flex-col gap-6 pt-4">
+        <div class="rounded-lg border border-ink/20 bg-ink/5 p-6">
+          <p class="mb-3 text-sm font-semibold text-ink">
+            En attendant, vous pouvez :
+          </p>
+          <ul class="flex flex-col gap-3 text-left text-sm text-ink/80">
+            <li>
+              • M'appeler directement au{" "}
+              <a href={site.phoneHref} class="font-semibold text-terracotta">
+                {site.phoneDisplay}
+              </a>
+            </li>
+            <li>
+              • Me rejoindre par email :{" "}
+              <a href={`mailto:${site.email}`} class="font-semibold text-terracotta">
+                {site.email}
+              </a>
+            </li>
+            <li>• Consulter des réalisations sur la <a href="/" class="font-semibold text-terracotta">page d'accueil</a></li>
+          </ul>
+        </div>
+
+        <a
+          href="/"
+          class="bg-terracotta px-8 py-4 text-base font-semibold text-paper transition-transform hover:-translate-y-0.5"
+        >
+          Retour à l'accueil
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>

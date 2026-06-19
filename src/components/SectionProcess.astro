@@ -1,0 +1,36 @@
+---
+const steps = [
+  "On parle 20 min de votre activité et d'où viennent vos clients aujourd'hui.",
+  "Je construis votre site et votre présence Google.",
+  "Chaque mois, vous voyez les demandes arriver — et le rapport qui les compte.",
+];
+---
+
+<section class="flex justify-center px-6 pb-24 md:px-12 lg:pb-28">
+  <div class="flex w-full max-w-[720px] flex-col gap-12">
+    <div class="flex flex-col gap-4">
+      <p class="section-label reveal">04 ——</p>
+      <h2
+        class="reveal font-display text-[clamp(2rem,4.5vw,3rem)] font-normal leading-[1.1] text-black"
+        data-delay="80"
+      >
+        «&nbsp;Comment ça se passe&nbsp;»
+      </h2>
+    </div>
+
+    <ol class="flex flex-col gap-8">
+      {
+        steps.map((step, i) => (
+          <li class="reveal flex gap-6" data-delay={i * 100}>
+            <span class="font-display text-2xl font-semibold text-terracotta">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p class="flex-1 text-lg leading-[1.5] text-black md:text-xl">
+              {step}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

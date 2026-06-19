@@ -1,0 +1,167 @@
+---
+// Section finale (CTA terracotta de la maquette) transformée en formulaire
+// d'audit gratuit à 4 champs, branché sur /api/audit -> webhook n8n.
+// Fonctionne sans JavaScript (POST classique + redirection /merci) et avec JS
+// (fetch + états inline, sans rechargement).
+---
+
+<section id="audit" class="bg-terracotta px-6 py-24 md:px-12 lg:py-32">
+  <div class="mx-auto flex w-full max-w-[800px] flex-col items-center gap-10">
+    <h2
+      class="reveal text-center font-display text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-tight text-paper"
+    >
+      «&nbsp;Combien de chantiers vous échappent faute d'être trouvé&nbsp;?&nbsp;»
+    </h2>
+    <p class="reveal max-w-[620px] text-center text-lg text-paper/90" data-delay="100">
+      Un audit gratuit de votre visibilité, sans engagement. Je regarde où vous
+      en êtes et je vous dis franchement ce qui vaut le coup.
+    </p>
+
+    <form
+      id="audit-form"
+      method="post"
+      action="/api/audit"
+      class="reveal flex w-full max-w-[560px] flex-col gap-5"
+      data-delay="200"
+      novalidate
+    >
+      {/* Honeypot anti-spam : invisible pour les humains, rempli par les bots. */}
+      <div class="absolute -left-[9999px]" aria-hidden="true">
+        <label for="website-url">Ne pas remplir</label>
+        <input
+          id="website-url"
+          type="text"
+          name="website_url"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="entreprise" class="text-sm font-medium text-paper/90">
+          Nom de l'entreprise <span class="text-paper/60">*</span>
+        </label>
+        <input
+          id="entreprise"
+          name="entreprise"
+          type="text"
+          required
+          autocomplete="organization"
+          placeholder="Ex. Peinture Muller"
+          class="w-full border border-paper/30 bg-paper px-4 py-3.5 text-ink placeholder:text-ink/35 focus:border-paper focus:outline-none"
+        />
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div class="flex flex-col gap-2">
+          <label for="ville" class="text-sm font-medium text-paper/90">
+            Ville <span class="text-paper/60">*</span>
+          </label>
+          <input
+            id="ville"
+            name="ville"
+            type="text"
+            required
+            autocomplete="address-level2"
+            placeholder="Strasbourg"
+            class="w-full border border-paper/30 bg-paper px-4 py-3.5 text-ink placeholder:text-ink/35 focus:border-paper focus:outline-none"
+          />
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="telephone" class="text-sm font-medium text-paper/90">
+            Téléphone <span class="text-paper/60">*</span>
+          </label>
+          <input
+            id="telephone"
+            name="telephone"
+            type="tel"
+            required
+            autocomplete="tel"
+            inputmode="tel"
+            placeholder="06 12 34 56 78"
+            class="w-full border border-paper/30 bg-paper px-4 py-3.5 text-ink placeholder:text-ink/35 focus:border-paper focus:outline-none"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="site_actuel" class="text-sm font-medium text-paper/90">
+          Site actuel <span class="text-paper/60">(optionnel)</span>
+        </label>
+        <input
+          id="site_actuel"
+          name="site_actuel"
+          type="url"
+          autocomplete="url"
+          placeholder="https://… ou laissez vide si vous n'en avez pas"
+          class="w-full border border-paper/30 bg-paper px-4 py-3.5 text-ink placeholder:text-ink/35 focus:border-paper focus:outline-none"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="mt-2 bg-white px-8 py-5 text-base font-semibold text-terracotta transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
+      >
+        Demander mon audit gratuit
+      </button>
+
+      <p
+        id="form-status"
+        role="status"
+        aria-live="polite"
+        class="min-h-[1.25rem] text-center text-sm text-paper"
+      >
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("audit-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status");
+  if (form && status) {
+    const button = form.querySelector(
+      'button[type="submit"]',
+    ) as HTMLButtonElement;
+    const defaultLabel = button.textContent;
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      status.classList.remove("text-paper/70");
+      status.textContent = "";
+
+      // Validation native + message clair.
+      if (!form.checkValidity()) {
+        status.textContent = "Merci de remplir les champs obligatoires.";
+        form.reportValidity();
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Envoi en cours…";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        });
+
+        if (response.ok) {
+          form.reset();
+          status.textContent =
+            "Merci ! Votre demande est bien reçue — je reviens vers vous très vite.";
+          button.textContent = "Demande envoyée ✓";
+          button.disabled = true;
+          return;
+        }
+        throw new Error(String(response.status));
+      } catch {
+        status.textContent =
+          "Oups, l'envoi a échoué. Réessayez ou appelez-moi directement.";
+        button.disabled = false;
+        button.textContent = defaultLabel;
+      }
+    });
+  }
+</script>

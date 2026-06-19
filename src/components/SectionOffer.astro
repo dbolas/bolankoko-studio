@@ -1,0 +1,46 @@
+---
+const rows = [
+  "On vous trouve. Référencement local pour apparaître quand quelqu'un cherche un artisan près de chez vous.",
+  "On vous fait confiance. Un site propre, rapide, et vos avis clients en avant.",
+  "Vous le mesurez. Chaque mois, un rapport clair : combien de demandes de devis votre présence en ligne vous a rapportées.",
+];
+---
+
+<section id="expertise" class="flex justify-center px-6 pb-24 md:px-12 lg:pb-28">
+  <div class="flex w-full max-w-[820px] flex-col gap-12">
+    <div class="flex flex-col gap-4">
+      <p class="section-label reveal">02 ——</p>
+      <h2
+        class="reveal font-display text-[clamp(2rem,4.5vw,3rem)] font-normal leading-[1.1] text-black"
+        data-delay="80"
+      >
+        «&nbsp;Pas un site. De la visibilité.&nbsp;»
+      </h2>
+    </div>
+
+    <div class="flex flex-col">
+      {
+        rows.map((row, i) => {
+          const [lead, ...rest] = row.split(". ");
+          return (
+            <div
+              class="reveal flex gap-4 border-b border-ink/10 py-5"
+              data-delay={i * 90}
+            >
+              <span class="text-xl leading-none text-ink/40">—</span>
+              <p class="flex-1 text-lg leading-[1.6] text-ink">
+                <strong class="font-semibold text-black">{lead}.</strong>{" "}
+                {rest.join(". ")}
+              </p>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <p class="reveal text-sm text-ink/40">
+      «&nbsp;Sans engagement piège. Vous restez parce que ça marche, pas parce
+      qu'un contrat vous bloque.&nbsp;»
+    </p>
+  </div>
+</section>

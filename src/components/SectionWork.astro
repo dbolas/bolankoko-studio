@@ -1,0 +1,64 @@
+---
+const projects = [
+  {
+    img: "/images/projet-1.png",
+    alt: "Façade de maison alsacienne à colombages, réalisation de l'Atelier Riedel.",
+    name: "Atelier Riedel — Peintre, Strasbourg.",
+    result: "→ première page sur « peintre Strasbourg » en 3 mois.",
+    height: "lg:h-[560px]",
+    width: "lg:w-[440px]",
+  },
+  {
+    img: "/images/projet-2.png",
+    alt: "Mur en briques en cours de construction, chantier Maçonnerie Huber.",
+    name: "Maçonnerie Huber — Hœnheim.",
+    result: "→ +18 demandes de devis le premier trimestre.",
+    height: "lg:h-[440px]",
+    width: "lg:w-[440px]",
+  },
+  {
+    img: "/images/projet-3.png",
+    alt: "Intérieur rénové avec grandes fenêtres, réalisation Bâtiment Kieffer.",
+    name: "Bâtiment Kieffer — Illkirch.",
+    result: "→ de 0 avis Google à 27 en 6 mois.",
+    height: "lg:h-[500px]",
+    width: "lg:w-[340px]",
+  },
+];
+---
+
+<section id="realisations" class="px-6 pb-28 md:px-12 lg:pb-36 lg:pl-20 lg:pr-20">
+  <div class="mb-16 flex max-w-[720px] flex-col gap-4">
+    <p class="section-label reveal">03 ——</p>
+    <h2
+      class="reveal font-display text-[clamp(2rem,4.5vw,3rem)] font-normal leading-[1.1] text-black"
+      data-delay="80"
+    >
+      «&nbsp;Des sites pensés pour le chantier, pas pour la galerie.&nbsp;»
+    </h2>
+  </div>
+
+  <div class="flex flex-col gap-10 lg:flex-row lg:items-end">
+    {
+      projects.map((p, i) => (
+        <figure
+          class={`reveal flex flex-col gap-5 ${p.width}`}
+          data-delay={i * 120}
+        >
+          <div class={`relative w-full overflow-hidden ${p.height} h-[420px]`}>
+            <img
+              src={p.img}
+              alt={p.alt}
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="flex flex-col gap-1 text-[15px]">
+            <span class="font-bold text-black">{p.name}</span>
+            <span class="text-ink">{p.result}</span>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</section>

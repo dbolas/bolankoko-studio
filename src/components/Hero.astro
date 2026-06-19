@@ -1,0 +1,67 @@
+---
+import { site } from "../config";
+---
+
+<section
+  id="contenu"
+  class="grid items-stretch lg:min-h-[800px] lg:grid-cols-[1fr_640px]"
+>
+  <div
+    class="flex flex-col justify-center px-6 py-16 md:px-12 lg:py-0 lg:pl-20 lg:pr-16"
+  >
+    <div class="flex max-w-[680px] flex-col gap-8 lg:gap-10">
+      <h1
+        class="reveal font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] text-black"
+        data-delay="0"
+      >
+        «&nbsp;Je crée des sites qui font sonner le téléphone des artisans.&nbsp;»
+      </h1>
+
+      <p
+        class="reveal max-w-[640px] text-lg leading-[1.6] text-ink md:text-xl"
+        data-delay="120"
+      >
+        Site, référencement local et avis clients pour les peintres et artisans
+        du bâtiment de {site.city} et l'Eurométropole. Pas une vitrine de plus —
+        des demandes de devis.
+      </p>
+
+      <div class="reveal flex flex-col gap-6" data-delay="240">
+        <div class="flex flex-wrap items-center gap-6">
+          <a
+            href="#audit"
+            class="bg-terracotta px-8 py-5 text-base font-semibold text-paper transition-transform hover:-translate-y-0.5"
+          >
+            Auditer ma visibilité — gratuit
+          </a>
+          <a
+            href="#realisations"
+            class="py-2 text-base font-medium text-ink underline decoration-from-font underline-offset-4 transition-colors hover:text-terracotta"
+          >
+            Voir des réalisations
+          </a>
+        </div>
+        <p class="text-[13px] text-ink/40">
+          Basé à {site.city} · Sans engagement · Résultats mesurés chaque mois
+        </p>
+      </div>
+    </div>
+
+    <p
+      class="mt-12 hidden text-[11px] font-medium tracking-[0.08em] text-ink/45 lg:mt-16 lg:block"
+    >
+      Défiler ↓
+    </p>
+  </div>
+
+  <div class="relative min-h-[360px] lg:min-h-full">
+    <img
+      src="/images/hero.png"
+      alt="Peintre en train d'appliquer de la peinture sur un mur, à Strasbourg."
+      class="absolute inset-0 h-full w-full object-cover"
+      width="896"
+      height="1152"
+      fetchpriority="high"
+    />
+  </div>
+</section>

@@ -1,0 +1,81 @@
+---
+import { site } from "../config";
+
+const links = [
+  { label: "Projets", href: "#realisations" },
+  { label: "Expertise", href: "#expertise" },
+  { label: "Audit", href: "#audit" },
+];
+---
+
+<header
+  class="sticky top-0 z-40 w-full border-b border-transparent bg-paper/85 backdrop-blur-md transition-colors"
+  data-nav
+>
+  <nav
+    class="flex items-center justify-between px-6 py-5 md:px-12 lg:px-20 lg:py-6"
+    aria-label="Navigation principale"
+  >
+    <a href="#contenu" class="font-display text-2xl font-bold text-black">
+      BOLANKOKO<span class="font-display italic font-normal"> Studio</span>
+    </a>
+
+    <div class="flex items-center gap-5 md:gap-8 lg:gap-10">
+      <ul class="hidden items-center gap-8 text-[15px] md:flex lg:gap-10">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="nav-link font-medium text-ink/90 transition-colors hover:text-black"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      {/* Téléphone cliquable — voie de contact parallèle, présente sur tous les écrans. */}
+      <a
+        href={site.phoneHref}
+        class="nav-link hidden items-center gap-2 text-[15px] font-medium text-ink/90 transition-colors hover:text-black sm:flex"
+      >
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"
+          ></path>
+        </svg>
+        {site.phoneDisplay}
+      </a>
+
+      <a
+        href="#audit"
+        class="bg-terracotta px-5 py-2.5 text-[15px] font-semibold text-paper transition-transform hover:-translate-y-0.5"
+      >
+        Contact
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Ajoute une bordure discrète à la nav une fois la page défilée.
+  const nav = document.querySelector("[data-nav]");
+  if (nav) {
+    const onScroll = () =>
+      nav.classList.toggle("border-ink/10", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>
